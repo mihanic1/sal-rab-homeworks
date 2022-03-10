@@ -51,7 +51,7 @@ function calcDiscount(sum, min, discount) {
         discountSum = productsSum / 100 * discountPart;
     }
     else {
-        discountSum =0;
+        discountSum = 0;
     }
 
     return discountSum;
