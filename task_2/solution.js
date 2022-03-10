@@ -20,16 +20,16 @@ function calcShipping(sum, min, shipping) {
 
     let shippingSum;
 
-    if (productsSum == 0 || productsSum >= freeShippingMinSum)
-    {
+    if (productsSum == 0 || productsSum >= freeShippingMinSum){
         shippingSum = 0;
     }
-    else {
-        shippingSum = shippingPrice;
+
+    else if (productsSum > 0 && productsSum < freeShippingMinSum){
+       shippingSum = shippingPrice;
     }
 
     return shippingSum;
-}
+
 
 function calcDiscount(sum, min, discount) {
     let productsSum = sum; // сумма в корзине
@@ -45,6 +45,14 @@ function calcDiscount(sum, min, discount) {
     // иначе присвойте discountSum значение 0
 
     // Конец решения задания №2.2.
+
+    let discountSum;
+    if (productsSum >= discountMinSum){
+        discountSum = productsSum / 100 * discountPart;
+    }
+    else {
+        discountSum =0;
+    }
 
     return discountSum;
 }
@@ -70,5 +78,14 @@ function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shi
 
     // Конец решения задачи №2.3.
 
+    let totalSum;
+    let freeShipping;
+    totalSum = productsSum;
+    totalSum = totalSum - discountSum;
+    totalSum = totalSum + shippingSum;
+    freeShipping != shippingSum;
+
     return {discount: discountSum, freeShipping, shipping: shippingSum, total: totalSum};
+}
+
 }
